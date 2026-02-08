@@ -72,7 +72,7 @@ def make_dashboard(xlsx_path, pollster, out_png, out_meta):
     try:
         ev = pd.read_excel(xlsx_path, sheet_name='Eventos', engine='openpyxl')
         ev['Fecha'] = ev['Fecha'].apply(excel_to_date)
-        ev['Evento'] = ev['Evento'].astype(str).str.replace('\n',' ', regex=False).str.strip()
+        ev['Evento'] = ev['Evento'].astype(str).str.replace('\n',' ', regex=False).str.strip() 
     except Exception:
         ev = pd.DataFrame(columns=['Fecha','Evento'])
 
@@ -89,7 +89,7 @@ def make_dashboard(xlsx_path, pollster, out_png, out_meta):
 
     df = nac[nac['Encuestadora']==pollster].sort_values('Fecha')
     if df.empty:
-        raise SystemExit(f'No hay datos para encuestadora={pollster}. Disponibles: {sorted(nac.'Encuestadora'.dropna().unique())}')
+        raise SystemExit(f'No hay datos para encuestadora={pollster}. Disponibles: {sorted(nac["Encuestadora"].dropna().unique())}')
 
     cand_cols = [c for c in ['Keiko','López A.','Álvarez','Vizcarra','Acuña','López C.'] if c in df.columns]
     for c in cand_cols:
