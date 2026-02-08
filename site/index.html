@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reporte Electoral (Actualización diaria)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Reporte Electoral</h1>
+    <p class="muted">Actualización diaria • Fuente: archivo Excel versionado en el repositorio</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row">
+        <h2>Último dashboard</h2>
+        <span id="meta" class="pill">Cargando…</span>
+      </div>
+      <img class="dashboard" src="assets/dashboard.png?__CACHE_BUST__" alt="Dashboard" />
+      <p class="muted">Si no ves cambios, recarga con Ctrl+F5 (cache del navegador).</p>
+    </section>
+
+    <section class="card">
+      <h2>Descargas</h2>
+      <ul>
+        <li><a href="assets/dashboard.png?__CACHE_BUST__" download>Descargar PNG</a></li>
+        <li><a href="assets/latest.json?__CACHE_BUST__" target="_blank" rel="noopener">Ver metadata (JSON)</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="container muted">
+    Hecho con GitHub Pages + GitHub Actions.
+  </footer>
+
+<script>
+(async () => {
+  try {
+    const r = await fetch('assets/latest.json?__CACHE_BUST__');
+    const j = await r.json();
+    const el = document.getElementById('meta');
+    el.textContent = `Generado: ${j.generated_utc} • Última encuesta: ${j.last_poll_date} • Pollster: ${j.pollster}`;
+  } catch (e) {
+    document.getElementById('meta').textContent = 'Sin metadata';
+  }
+})();
+</script>
+</body>
+</html>

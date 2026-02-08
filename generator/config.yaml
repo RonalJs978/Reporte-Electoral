@@ -1,0 +1,6 @@
+xlsx_path: data/Encuestas_2025.xlsx
+pollster: ipsos
+out_png: dist/assets/dashboard.png
+out_meta: dist/assets/latest.json
+site_index: site/index.html
+dist_index: dist/index.html

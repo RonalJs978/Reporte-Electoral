@@ -1,0 +1,13 @@
+{
+  "pollster": "ipsos",
+  "last_poll_date": "2026-01-08",
+  "generated_utc": "2026-02-08T00:40:32.304038Z",
+  "has_macro": true,
+  "sheets": [
+    "ENCUESTA_PERU",
+    "Eventos",
+    "Lima",
+    "zonificado",
+    "zonificado cpi"
+  ]
+}
